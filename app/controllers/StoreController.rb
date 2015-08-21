@@ -66,6 +66,7 @@ class StoreController < App
     category_id = params[:id]
     #put across a query to fetch items with the category id.
     current_category = Product.find(category_id)
+
   end
 
 
