@@ -19,9 +19,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
         <% if !login? %>
-        <li>
-          <a class="btn-link pull-right" data-toggle="modal" data-target=".login">&nbsp;&nbsp;<i class="fa fa-"></i>Login</a>
-        </li>
+            <li>
+              <a class="btn-link pull-right" data-toggle="modal" data-target=".login">&nbsp;&nbsp;<i class="fa fa-"></i>Login</a>
+            </li>
         <% else %>
             <li>
               <a href="/logout" class="btn-link pull-right">&nbsp;&nbsp;<i class="fa"></i>Logout</a>
@@ -35,9 +35,9 @@
           <a class="btn-link pull-right">&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i><% @cart_text %></a>
         </li>
         <% if login? %>
-        <li>
-          <a class="pull-right btn-link label label-primary">&nbsp;&nbsp;<%=session[:username]%></a>
-        </li>
+            <li>
+              <a class="pull-right btn-link label label-primary">&nbsp;&nbsp;<%=session[:username]%></a>
+            </li>
         <% end %>
       </ul>
     </div>
@@ -83,8 +83,8 @@
         <button type="button" class="btn btn-default close-login" data-dismiss="modal">Close</button>
       </div>
     </div>
-    </div>
   </div>
+</div>
 </div>
 
 
@@ -131,8 +131,8 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+    </div>
   </div>
-</div>
 </div>
 
 
@@ -152,7 +152,7 @@
       <p class="lead">Categories</p>
       <div class="list-group">
         <% @categories.each do |category| %>
-          <a href="/category/<%= category.id %>" class="list-group-item"><%= category.category %></a>
+            <a href="/category/<%= category.id %>" class="list-group-item"><%= category.category %></a>
         <% end %>
       </div>
     </div>
@@ -192,33 +192,33 @@
 
       <div class="row">
         <% @products.each do |product|  %>
-        <div class="col-sm-4 col-lg-4 col-md-4" style=" min-height: 400px;">
-          <div class="thumbnail">
-            <img src="<%= product.thumb %>" alt="" style="height: 150px">
-            <div class="caption">
-              <h4 class="pull-right"><%= product.price %></h4>
-              <h4><a><%= product.name %></a>
-              </h4>
-              <p><%= product.description %></p>
+            <div class="col-sm-4 col-lg-4 col-md-4">
+              <div class="thumbnail">
+                <img src="<%= product.thumb %>" alt="">
+                <div class="caption">
+                  <h4 class="pull-right"><%= product.price %></h4>
+                  <h4><a><%= product.name %></a>
+                  </h4>
+                  <p><%= product.description %></p>
+                </div>
+                <div class="ratings">
+                  <p class="pull-right">15 reviews</p>
+                  <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                  </p>
+                </div>
+                <form name="addToCartForm">
+                  <input type="hidden" class="item_id" value="<%= product.id %>" />
+                </form>
+                <form name="addToCartForm">
+                  <button class="btn btn-block btn-success submitbutton">Add to cart</button>
+                </form>
+              </div>
             </div>
-            <div class="ratings">
-              <p class="pull-right">15 reviews</p>
-              <p>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-              </p>
-            </div>
-            <form name="addToCartForm">
-              <input type="hidden" class="item_id" value="<%= product.id %>" />
-            </form>
-            <form name="addToCartForm">
-              <button class="btn btn-block btn-success submitbutton">Add to cart</button>
-            </form>
-          </div>
-        </div>
         <% end %>
       </div>
 

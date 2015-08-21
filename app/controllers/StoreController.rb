@@ -11,8 +11,8 @@ class StoreController < App
   get '/' do
     @title = 'Welcome to Mcbheez Groceries'
     @categories = Category.all
-    #@products = Product.all
-    #@products = @products.paginate(:page => params[:page], :per_page => 3)
+    @products = Product.all
+    @products = @products.paginate(:page => params[:page], :per_page => 10)
     #cart_text
     erb 'user/index'.to_sym, :layout => :layout
   end
@@ -62,43 +62,20 @@ class StoreController < App
     redirect to('/cart')
   end
 
-
-
   get '/category/:id' do
-    category_id = params[:id]
     #put across a query to fetch items with the category id.
-    current_category = Product.find(category_id)
-
+      cat = Product.find_by(category_id: params[:id].to_i)
+      @products = Product.all if params[:id].to_i === cat[:category_id].to_i
+      @categories = Category.all
+    erb 'user/index'.to_sym
   end
-
 
   get '/checkout' do
     erb 'user/checkout'.to_sym , :layout => :layout
   end
 
-
   not_found do
     erb :'404', :layout => :layout
     #create nice template for this
-  end
-
-  get '/productsgenerate' do
-    100.times do
-      Product.create(
-          :name => Faker::Commerce.product_name,
-          :price => Faker::Commerce.price,
-          :thumb => Faker::Company.logo,
-          :description => Faker::Lorem.sentence(word_count=10, supplemental = false, random_words_to_add = 6),
-          :category_id => Faker::Number.between(from=101, to=110)
-      )
-    end
-  end
-
-  get '/categoriesgenerate' do
-    10.times do
-      Category.create(
-          :category => Faker::Commerce.department(max=1, fixed_amount=false)
-      )
-    end
   end
 end

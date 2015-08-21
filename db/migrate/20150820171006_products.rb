@@ -10,7 +10,7 @@ class Products < ActiveRecord::Migration
     end
   end
 
-  def downcategories
+  def down
     drop_table :products
   end
 end
