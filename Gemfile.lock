@@ -36,14 +36,19 @@ GEM
     bcrypt (3.1.10)
     bcrypt (3.1.10-x86-mingw32)
     builder (3.2.2)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    columnize (0.9.0)
     daemons (1.1.8)
     erubis (2.7.0)
+    faker (1.5.0)
+      i18n (~> 0.5)
     i18n (0.7.0)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -54,6 +59,8 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    money (6.6.1)
+      i18n (>= 0.6.4, <= 0.7.0)
     mysql2 (0.3.19)
     mysql2 (0.3.19-x86-mingw32)
     nokogiri (1.6.6.2)
@@ -109,9 +116,12 @@ DEPENDENCIES
   activemerchant
   activerecord
   bcrypt
+  byebug
   capybara
+  faker
   jquery-rails
   minitest
+  money (~> 6.4)
   mysql2
   rack (= 1.6.2)
   rack-flash3

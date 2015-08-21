@@ -13,8 +13,7 @@ gem 'will_paginate'
 gem 'byebug'
 gem 'will_paginate-bootstrap'
 gem 'faker'
-gem 'money'
-
+gem 'money', '~> 6.4'
 
 group :development, :test do
   gem 'minitest'

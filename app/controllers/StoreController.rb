@@ -10,10 +10,10 @@ class StoreController < App
 
   get '/' do
     @title = 'Welcome to Mcbheez Groceries'
-    @get_categories = products.categories
-    @products = Product.all
-    @products = @products.paginate(:page => params[:page], :per_page => 3)
-    cart_text
+    @categories = Category.all
+    #@products = Product.all
+    #@products = @products.paginate(:page => params[:page], :per_page => 3)
+    #cart_text
     erb 'user/index'.to_sym, :layout => :layout
   end
 
@@ -52,15 +52,17 @@ class StoreController < App
     redirect back
   end
 
+  get '/cart' do
+    erb 'user/cart'.to_sym, :layout => :layout
+  end
+
   delete '/cart/items/:id' do
     return if cart_item_delete_success(params[:id].to_i)
     flash[:error] = 'Cart item not found'
     redirect to('/cart')
   end
 
-  get '/cart' do
-    erb 'user/cart'.to_sym
-  end
+
 
   get '/category/:id' do
     category_id = params[:id]
@@ -80,4 +82,23 @@ class StoreController < App
     #create nice template for this
   end
 
+  get '/productsgenerate' do
+    100.times do
+      Product.create(
+          :name => Faker::Commerce.product_name,
+          :price => Faker::Commerce.price,
+          :thumb => Faker::Company.logo,
+          :description => Faker::Lorem.sentence(word_count=10, supplemental = false, random_words_to_add = 6),
+          :category_id => Faker::Number.between(from=101, to=110)
+      )
+    end
+  end
+
+  get '/categoriesgenerate' do
+    10.times do
+      Category.create(
+          :category => Faker::Commerce.department(max=1, fixed_amount=false)
+      )
+    end
+  end
 end

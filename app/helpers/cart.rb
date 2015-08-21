@@ -22,8 +22,7 @@ module Cart_methods
   def checkout
     order = Order.create customer: current_user
     cart.items_table.each do |line|
-      order.add_order_line(Orderline.new(product: line[:product],
-                                         qty: line[:qty]))
+      Orderline.new(product: line[:product],qty: line[:qty])
     end
     cart.clear
     update_session_cart

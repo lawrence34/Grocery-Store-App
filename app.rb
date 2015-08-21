@@ -16,6 +16,7 @@ require 'will_paginate-bootstrap'
 #require './lib/shopping_cart'
 #require 'minitest/autorun'
 require 'bcrypt'
+require 'faker'
 #require_relative 'spec/test'
 
 class App < Sinatra::Base

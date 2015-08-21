@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150820171121) do
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255, null: false
     t.string   "description", limit: 255, null: false
+    t.integer  "price",       limit: 4,   null: false
     t.string   "thumb",       limit: 255, null: false
     t.integer  "category_id", limit: 4,   null: false
     t.datetime "created_at",              null: false

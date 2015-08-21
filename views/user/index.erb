@@ -145,15 +145,15 @@
       <div>
         <form method="get">
           <input class="form-control search-input" type="text">
+          <button class="btn btn-block btn-success">Surf!</button>
         </form>
       </div>
       <br><br><br>
       <p class="lead">Categories</p>
       <div class="list-group">
-        <a href="#" class="list-group-item">Featured</a>
-        <% @get_categories.each { |category| %>
-          <a class="list-group-item"><%= category %></a>
-        <% } %>
+        <% @categories.each do |category| %>
+          <a href="/category/<%= category.id %>" class="list-group-item"><%= category.category %></a>
+        <% end %>
       </div>
     </div>
 
@@ -191,15 +191,15 @@
       </div>
 
       <div class="row">
-        <% @products.each do |product|  %>
+        <% #@products.each do |product|  %>
         <div class="col-sm-4 col-lg-4 col-md-4">
           <div class="thumbnail">
-            <img src="<% product.thumb %>" alt="">
+            <img src="<% #product.thumb %>" alt="">
             <div class="caption">
-              <h4 class="pull-right"><% product.price %></h4>
-              <h4><a href="#"><% product.name %></a>
+              <h4 class="pull-right"><% #product.price %></h4>
+              <h4><a href="#"><% #product.name %></a>
               </h4>
-              <p><% product.description %></p>
+              <p><% #product.description %></p>
             </div>
             <div class="ratings">
               <p class="pull-right">15 reviews</p>
@@ -211,7 +211,7 @@
                 <span class="glyphicon glyphicon-star"></span>
               </p>
             </div>
-            <form name="addToCartForm">6
+            <form name="addToCartForm">
               <input type="hidden" class="item_id" value="<% #@products.id %>" />
             </form>
             <form name="addToCartForm">
@@ -219,9 +219,8 @@
             </form>
           </div>
         </div>
-        <%= will_paginate @products, renderer: BootstrapPagination::Sinatra %>
+        <% #end %>
       </div>
-      <% end %>
 
     </div>
 
