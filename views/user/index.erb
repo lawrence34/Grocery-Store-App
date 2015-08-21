@@ -193,7 +193,7 @@
       <div class="row">
         <% @products.each do |product|  %>
         <div class="col-sm-4 col-lg-4 col-md-4" style=" min-height: 400px;">
-          <div class="thumbnail">
+`          <div class="thumbnail">
             <img src="<%= product.thumb %>" alt="" style="height: 150px">
             <div class="caption">
               <h4 class="pull-right"><%= product.price %></h4>
@@ -220,6 +220,7 @@
           </div>
         </div>
         <% end %>
+        <%= will_paginate @products, renderer: BootstrapPagination::Sinatra %>
       </div>
 
     </div>
